@@ -1,0 +1,16 @@
+{
+  "pack": {
+    "id": "chrono_machina",
+    "description": "Adds Clockwork (Chronosapiens)  as a transformation to Alien Evo",
+    "pack_format": 15,
+    "version": "1.0.0"
+  },
+  "dependencies": {
+    "common": {
+    },
+    "fabric": {
+    },
+    "forge": {
+    }
+  }
+}

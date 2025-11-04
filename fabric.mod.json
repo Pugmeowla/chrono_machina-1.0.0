@@ -1,0 +1,11 @@
+{
+    "schemaVersion": 1,
+    "authors": [],
+    "environment": "*",
+    "name": "Deus Chrono-Machina",
+    "id": "chrono_machina",
+    "version": "1.0.0",
+    "description": "Adds Clockwork (Chronosapiens)  as a transformation to Alien Evo",
+    "icon": "logo.png",
+    "license": "All rights reserved"
+}

@@ -1,0 +1,21 @@
+modLoader = 'lowcodefml'
+showAsResourcePack = false
+loaderVersion="[47,)"
+license="All rights reserved"
+
+[[mods]]
+modId="chrono_machina"
+displayName="Deus Chrono-Machina"
+version="1.0.0"
+logoFile = "logo.png"
+logoBlur = false
+description='''
+Adds Clockwork (Chronosapiens)  as a transformation to Alien Evo
+'''
+
+[[dependencies.chrono_machina]]
+modId = "palladium"
+mandatory = true
+versionRange = ""
+ordering = "NONE"
+side = "BOTH"
