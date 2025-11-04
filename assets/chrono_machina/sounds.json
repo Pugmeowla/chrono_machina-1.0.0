@@ -1,22 +1,11 @@
 {
-    "prototype_warning":{
-        "sounds":[
-            "timewalker:prototype_warning"
-        ]
-    },
-     "grandfather_clock":{
-        "sounds":[
-            "timewalker:grandfather_clock",
-            "timewalker:big_ben"
-        ]
-    },
-     "ticking":{
-        "sounds":[
-            "timewalker:ticking"
-        ]
-    },
-     "scanning": {
-    "category": "player",
-    "sounds": ["timewalker:scanning"]
+  "prototype_warning": {
+    "sounds": ["chrono_machina:prototype_warning"]
+  },
+  "grandfather_clock": {
+    "sounds": ["chrono_machina:grandfather_clock", "chrono_machina:big_ben"]
+  },
+  "ticking": {
+    "sounds": ["chrono_machina:ticking"]
   }
 }
