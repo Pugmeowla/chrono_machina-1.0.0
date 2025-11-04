@@ -1,0 +1,22 @@
+{
+    "prototype_warning":{
+        "sounds":[
+            "timewalker:prototype_warning"
+        ]
+    },
+     "grandfather_clock":{
+        "sounds":[
+            "timewalker:grandfather_clock",
+            "timewalker:big_ben"
+        ]
+    },
+     "ticking":{
+        "sounds":[
+            "timewalker:ticking"
+        ]
+    },
+     "scanning": {
+    "category": "player",
+    "sounds": ["timewalker:scanning"]
+  }
+}

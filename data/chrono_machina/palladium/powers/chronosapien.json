@@ -1,0 +1,435 @@
+{
+  "name": "chronosapien",
+  "icon": "alienevo:textures/gui/playlists/playlist_1/alien_143.png",
+  "background": "alienevo:textures/gui/power_screen/power_screen.png",
+  "primary_color": "#8ed721",
+  "allow_bar_shrinking": false,
+  "secondary_color": "#332e27",
+  "ability_bar_texture": "alienevo:textures/gui/ability_bar/interface.png",
+  "hidden": false,
+  "energy_bars": {
+    "chronosapien_meter": {
+      "max": 500,
+      "auto_increase_per_tick": 3,
+      "color": "#C0FF00"
+    }
+  },
+  "abilities": {
+    "hideBody": {
+      "type": "palladium:hide_body_part",
+      "icon": "minecraft:blaze_rod",
+      "bar_color": "light_gray",
+      "hidden": true,
+      "hidden_in_bar": true,
+      "affects_first_person": true,
+      "body_parts": [
+        "right_arm",
+        "left_arm",
+        "chest",
+        "chest_overlay",
+        "right_arm_overlay",
+        "left_arm_overlay",
+        "right_leg",
+        "left_leg",
+        "cape",
+        "right_leg_overlay",
+        "left_leg_overlay",
+        "head",
+        "head_overlay"
+      ]
+    },
+    "changeName": {
+      "type": "palladium:name_change",
+      "icon": "minecraft:blaze_rod",
+      "hidden": true,
+      "hidden_in_bar": true,
+      "name": {
+        "text": "Chronian"
+      }
+    },
+    "renderLayer": {
+      "type": "palladium:render_layer",
+      "hidden": true,
+      "render_layer": "chrono_machina:chronosapien"
+    },
+    "size_change": {
+      "type": "palladium:size",
+      "title": "Size Change",
+      "hidden": true,
+      "scale": 1.33
+    },
+    "base_speed": {
+      "type": "palladium:attribute_modifier",
+      "attribute": "minecraft:generic.movement_speed",
+      "icon": "minecraft:textures/item/iron_sword.png",
+      "hidden": true,
+      "uuid": "01d54cb1-6b09-41a7-92e2-83e076426a30",
+      "amount": -0.02,
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:not",
+            "conditions": [
+              {
+                "type": "palladium:ability_enabled",
+                "power": "null",
+                "ability": "ball_roll"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "base_form": {
+      "type": "alienevo:omnitrix_detransform",
+      "icon": "#alienevo:detransform",
+      "title": {
+        "translate": "ability.alienevo.omnitrix.base_form"
+      },
+      "hidden": true,
+      "list_index": 4,
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:action",
+            "key_type": "key_bind"
+          }
+        ],
+        "unlocking": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+              {
+                "type": "palladium:has_tag",
+                "tag": "AlienEvo.BaseForm"
+              },
+              {
+                "type": "palladium:has_tag",
+                "tag": "AlienEvo.MasterControl"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "scan_geo": {
+      "type": "geckolib:render_layer_animation",
+      "hidden": true,
+      "render_layer": "chrono_machina:chronosapien",
+      "controller": "spin",
+      "animation_trigger": "spin_trigger",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:true"
+          }
+        ]
+      }
+    },
+    "time_blast": {
+      "type": "palladium:energy_beam",
+      "persistent_data": true,
+      "icon": "minecraft:beacon",
+      "title": "Power Blast",
+      "bar_color": "purple",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": 0,
+      "gui_position": "null",
+      "description": "null",
+      "energy_beam": "chrono_machina:chronosapien_beam",
+      "damage": 5,
+      "max_distance": 100,
+      "speed": 1,
+      "energy_bar_usage": {
+        "energy_bar": "chronosapien_meter",
+        "amount": 2
+      },
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:held",
+            "cooldown": 0
+          }
+        ]
+      }
+    },
+    "heal": {
+      "type": "palladium:command",
+      "icon": "minecraft:command_block",
+      "title": "null",
+      "bar_color": "light_gray",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": -1,
+      "gui_position": "null",
+      "description": "null",
+      "first_tick_commands": [],
+      "last_tick_commands": [],
+      "commands": [
+        "effect give @e[distance=..10] minecraft:saturation 5 1 true"
+      ]
+    },
+    "speed": {
+      "type": "palladium:attribute_modifier",
+      "icon": "minecraft:textures/mob_effect/speed.png",
+      "title": "Speed",
+      "bar_color": "light_blue",
+      "hidden": false,
+      "persistent_data": true,
+      "hidden_in_bar": false,
+      "list_index": 1,
+      "description": "Lets you run faster",
+      "attribute": "minecraft:generic.movement_speed",
+      "amount": 0.5,
+      "operation": 0,
+      "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+      "energy_bar_usage": {
+        "energy_bar": "chronosapien_meter",
+        "amount": 4
+      },
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:toggle",
+            "cooldown": 0,
+            "key_type": "key_bind",
+            "needs_empty_hand": false,
+            "allow_scrolling_when_crouching": true
+          }
+        ],
+        "unlocking": {
+          "type": "palladium:energy_bar",
+          "energy_bar": "chronosapien_meter",
+          "min": 10
+        }
+      }
+    },
+    "step_assist": {
+      "type": "palladium:attribute_modifier",
+      "icon": "infinity:textures/icon/force_field.png",
+      "title": "Step Assist",
+      "persistent_data": true,
+      "bar_color": "light_blue",
+      "hidden": false,
+      "hidden_in_bar": true,
+      "list_index": -1,
+      "description": "Lets you walk up a whole block at once",
+      "attribute": "forge:step_height_addition",
+      "amount": 0.5,
+      "operation": 0,
+      "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:ability_enabled",
+            "power": "null",
+            "ability": "speed"
+          }
+        ]
+      }
+    },
+    "slow": {
+      "type": "palladium:command",
+      "icon": "minecraft:command_block",
+      "title": "null",
+      "bar_color": "light_gray",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": -1,
+      "gui_position": "null",
+      "description": "null",
+      "first_tick_commands": [
+        "playsound chrono_machina:grandfather_clock player @s"
+      ],
+      "last_tick_commands": [],
+      "commands": [
+        "effect give @e[distance=..10] minecraft:slowness 1 255 true",
+        "effect clear @s"
+      ],
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:ability_enabled",
+            "power": "null",
+            "ability": "speed"
+          }
+        ]
+      }
+    },
+    "pro_res": {
+      "type": "palladium:damage_immunity",
+      "hidden": true,
+      "damage_sources": ["minecraft:is_projectile"],
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:ability_enabled",
+            "power": "null",
+            "ability": "speed"
+          }
+        ]
+      }
+    },
+    "xlr8_trail": {
+      "type": "palladium:trail",
+      "list_index": -1,
+      "hidden": true,
+      "trail": "chrono_machina:chronosapien_trail",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:ability_enabled",
+            "power": "null",
+            "ability": "speed"
+          }
+        ]
+      }
+    },
+    "set_clockpoint": {
+      "type": "palladium:command",
+      "icon": "minecraft:command_block",
+      "title": "Set Clockpoint",
+      "bar_color": "light_gray",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": 2,
+      "gui_position": "null",
+      "description": "null",
+      "first_tick_commands": [],
+      "last_tick_commands": [],
+      "commands": [
+        "function chrono_machina:set_waypoint",
+        "playsound chrono_machina:grandfather_clock player @s"
+      ],
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:action",
+            "cooldown": 0,
+            "key_type": "key_bind",
+            "needs_empty_hand": false,
+            "allow_scrolling_when_crouching": true
+          }
+        ],
+        "unlocking": [
+          {
+            "type": "palladium:crouching"
+          }
+        ]
+      }
+    },
+
+    "tp_clockpoint": {
+      "type": "palladium:command",
+      "icon": "minecraft:chain_command_block",
+      "title": "Rewind to Clockpoint",
+      "bar_color": "light_gray",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": 2,
+      "gui_position": "null",
+      "description": "null",
+      "first_tick_commands": [],
+      "last_tick_commands": [],
+      "energy_bar_usage": {
+        "energy_bar": "chronosapien_meter",
+        "amount": 200
+      },
+      "commands": [
+        "function chrono_machina:tp_waypoint",
+        "playsound chrono_machina:grandfather_clock player @s"
+      ],
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:action",
+            "cooldown": 0,
+            "key_type": "key_bind",
+            "needs_empty_hand": false,
+            "allow_scrolling_when_crouching": true
+          }
+        ],
+        "unlocking": [
+          {
+            "type": "palladium:energy_bar",
+            "energy_bar": "chronosapien_meter",
+            "min": 200
+          },
+          {
+            "type": "palladium:not",
+            "conditions": [
+              {
+                "type": "palladium:crouching"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "stop_sound": {
+      "type": "palladium:command",
+      "icon": "minecraft:command_block",
+      "title": "Rewind to Clockpoint",
+      "bar_color": "light_gray",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": 3,
+      "gui_position": "null",
+      "description": "null",
+      "first_tick_commands": [],
+      "last_tick_commands": [],
+      "energy_bar_usage": {
+        "energy_bar": "chronosapien_meter",
+        "amount": 200
+      },
+      "commands": ["stopsound @s"],
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "base_form"
+          }
+        ]
+      }
+    },
+    "ticking": {
+      "type": "palladium:command",
+      "icon": "minecraft:command_block",
+      "title": "Rewind to Clockpoint",
+      "bar_color": "light_gray",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": 3,
+      "gui_position": "null",
+      "description": "null",
+      "first_tick_commands": ["function chrono_machina:ticking"],
+      "last_tick_commands": [],
+      "commands": []
+    },
+    "fast_forward": {
+      "type": "palladium:command",
+      "icon": "minecraft:command_block",
+      "title": "Rewind to Clockpoint",
+      "bar_color": "light_gray",
+      "hidden": false,
+      "hidden_in_bar": false,
+      "list_index": 3,
+      "gui_position": "null",
+      "description": "null",
+      "first_tick_commands": [
+        "playsound chrono_machina:grandfather_clock player @s"
+      ],
+      "last_tick_commands": [],
+      "commands": ["time add 100"],
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:held",
+            "cooldown": 0
+          }
+        ]
+      }
+    }
+  }
+}

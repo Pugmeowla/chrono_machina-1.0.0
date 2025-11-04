@@ -1,0 +1,128 @@
+{
+    "type": "palladium:compound",
+  "layers": [
+  {
+    "type": "geckolib:default",
+          "model": {
+        "base": "timewalker:geo/chronosapien_#UNIFORM.geo.json",
+        "variables": {
+          "UNIFORM": {
+            "type": "palladium:string_property",
+            "property": "uniform"
+          }
+        }
+      },
+    "animation_file": "timewalker:animations/chronosapien.animation.json",
+    "animation_controller": [
+    {
+          "name": "spin",
+          "transition_tick_time": 0,
+          "triggers": {
+            "spin": "animation.timewalker.clockwork"
+          }
+        }
+  ],
+    "texture":{
+      "base": "timewalker:textures/models/aliens/alien_143/chronosapien_#UNIFORM.png",
+       "variables": {
+         "UNIFORM": {
+            "type": "palladium:string_property",
+            "property": "uniform"
+          }
+       }
+      
+    },
+    
+    
+
+    "bones": {
+        "head": "Head",
+        "body": "Body",
+        "right_arm": "RightArm",
+        "left_arm": "LeftArm",
+        "right_leg": "Rightleg",
+        "left_leg": "LeftLeg"
+
+    }
+  },
+  {
+    "type": "geckolib:default",
+    "model": "timewalker:geo/chronosapien.geo.json",
+     "render_type": "glow",
+    "texture": "timewalker:textures/models/aliens/alien_143/chronosapien_glow.png",
+    "bones": {
+        "head": "Head",
+        "body": "Body",
+        "right_arm": "RightArm",
+        "left_arm": "LeftArm",
+        "right_leg": "Rightleg",
+        "left_leg": "LeftLeg"
+
+    }
+  },
+    {
+      "type": "geckolib:default",
+      "model": {
+        "base": "timewalker:geo/chronosapien_badge.geo.json"
+      },
+      "texture": {
+        "base": "alienevo:textures/models/badge/badge_prototype.png"
+      }
+    },
+    {
+      "type": "geckolib:default",
+      "render_type": "glow",
+       "model": {
+        "base": "timewalker:geo/chronosapien_badge.geo.json"
+      },
+      "texture": {
+        "base": "alienevo:textures/models/badge/badge_glow_default_prototype.png"
+      }
+    },
+    {
+      "type": "geckolib:default",
+      "render_type": "glow",
+      "model": {
+        "base": "timewalker:geo/chronosapien_badge.geo.json"
+      },
+      "texture": {
+        "variables": {
+          "BADGE": {
+            "type": "palladium:string_property",
+            "property": "badge"
+          }
+        },
+        "base": "alienevo:textures/models/badge/badge_glow_timeout_prototype.png"
+      },
+      "conditions": [
+        {
+          "type": "alienevo:has_timeout_bubble",
+          "value": true
+        },
+        {
+          "type": "palladium:or",
+          "conditions": [
+            {
+              "type": "palladium:objective_score",
+              "objective": "AlienEvo.Timer",
+              "min_score": 5940,
+              "max_score": 5950
+            },
+            {
+              "type": "palladium:objective_score",
+              "objective": "AlienEvo.Timer",
+              "min_score": 5960,
+              "max_score": 5970
+            },
+            {
+              "type": "palladium:objective_score",
+              "objective": "AlienEvo.Timer",
+              "min_score": 5980,
+              "max_score": 6000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
