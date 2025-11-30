@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["CGN", "RBR", "NGC"],
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "chrono_machina:broken_chronosapien_time_bomb"
+    }
+  },
+  "result": {
+    "item": "chrono_machina:chasis",
+    "count": 1
+  }
+}

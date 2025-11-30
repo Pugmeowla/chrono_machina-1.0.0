@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["GGG", "GNG", "GGG"],
+  "key": {
+    "G": {
+      "item": "minecraft:tinted_glass"
+    },
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    }
+  },
+  "result": {
+    "item": "chrono_machina:chronosapien_window",
+    "count": 1
+  }
+}

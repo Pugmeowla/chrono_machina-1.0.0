@@ -6,6 +6,14 @@
       "model": {
         "base": "chrono_machina:geo/chronosapien.geo.json"
       },
+      "animation_file": "chrono_machina:animations/key.animation.json",
+      "animation_controller": [
+        {
+          "name": "key",
+          "transition_tick_time": 0,
+          "animation": "key.animation"
+        }
+      ],
       "texture": {
         "transformers": [
           {

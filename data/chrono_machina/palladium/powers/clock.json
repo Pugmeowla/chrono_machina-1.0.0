@@ -1,0 +1,74 @@
+{
+  "name": {
+    "text": "Saiyan Scanned"
+  },
+  "icon": "alienevo:textures/gui/fakeatrix/omnitrix_scan.png",
+  "background": "alienevo:textures/gui/power_screen/power_screen.png",
+  "primary_color": "#8ed721",
+  "allow_bar_shrinking": false,
+  "hidden": true,
+  "persistent_data": true,
+  "secondary_color": "#332e27",
+  "ability_bar_texture": "alienevo:textures/gui/ability_bar/interface.png",
+  "abilities": {
+    "unlock": {
+      "type": "palladium:command",
+      "icon": "alienevo:textures/gui/playlists/playlist_1/alien_264.png",
+      "title": "Saiyan",
+      "bar_color": "light_gray",
+      "hidden": true,
+      "hidden_in_bar": true,
+      "list_index": -1,
+      "description": "null",
+      "first_tick_commands": [],
+      "last_tick_commands": [],
+      "commands": [
+        "item replace entity @s weapon.mainhand with minecraft:air 1",
+        "playsound alienevo:prototype_core_place player @s",
+        "alienautoadd @s chrono_machina:chronosapien"
+      ],
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:action",
+            "cooldown": 0,
+            "key_type": "right_click",
+            "needs_empty_hand": false,
+            "allow_scrolling_when_crouching": true
+          }
+        ],
+        "unlocking": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+              {
+                "type": "palladium:has_power",
+                "power": "alienevo:prototype_omnitrix"
+              },
+              {
+                "type": "palladium:has_power",
+                "power": "evo_reds_alienpack_noncustom:recal_omnitrix"
+              },
+              {
+                "type": "palladium:has_power",
+                "power": "evo_reds_alienpack:recal_omnitrix"
+              },
+              {
+                "type": "palladium:has_power",
+                "power": "evo_reds_alienpack_ult_noncustom:ult_omnitrix"
+              },
+              {
+                "type": "palladium:has_power",
+                "power": "evo_reds_alienpack_ult:ult_omnitrix"
+              },
+              {
+                "type": "palladium:has_power",
+                "power": "evo_reds_alienpack_completed:completed_omnitrix"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

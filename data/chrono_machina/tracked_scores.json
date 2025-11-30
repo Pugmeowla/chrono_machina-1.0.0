@@ -1,7 +1,7 @@
 {
   "objectives": [
-    "chronosapien.XP",
-    "chronosapien.Level",
-    "chronosapien.SkillPoint"
+    "Chronosapien.XP",
+    "Chronosapien.Level",
+    "Chronosapien.SkillPoint"
   ]
 }

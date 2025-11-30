@@ -12,10 +12,3 @@ logoBlur = false
 description='''
 Adds Clockwork (Chronosapiens)  as a transformation to Alien Evo
 '''
-
-[[dependencies.chrono_machina]]
-modId = "palladium"
-mandatory = true
-versionRange = ""
-ordering = "NONE"
-side = "BOTH"
