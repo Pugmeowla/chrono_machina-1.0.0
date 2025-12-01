@@ -1,5 +1,5 @@
 global.alienevo_alien_88 = ['chrono_machina:chronosapien']; // Register your alien. Use an index value between 102 and 88
-global.alienevo_randomization_88 = [false]; // Determine if you want your alien to be unlocked through mistransformation.
+global.alienevo_randomization_88 = [true]; // Determine if you want your alien to be unlocked through mistransformation.
 
 // INTERFACE VALUES
 global.alienevo_regen_88 = [0]; // A faux regen value to represent your alien's healing capability. Values 0 thru 10. Does not effect gameplay.

@@ -1,11 +1,18 @@
 {
-  "prototype_warning": {
-    "sounds": ["chrono_machina:prototype_warning"]
-  },
-  "grandfather_clock": {
-    "sounds": ["chrono_machina:grandfather_clock", "chrono_machina:big_ben"]
-  },
   "ticking": {
+    "category": "player",
     "sounds": ["chrono_machina:ticking"]
+  },
+  "time_slow": {
+    "category": "player",
+    "sounds": ["chrono_machina:time_slow"]
+  },
+  "beam": {
+    "category": "player",
+    "sounds": ["chrono_machina:beam"]
+  },
+  "time_stop": {
+    "category": "player",
+    "sounds": ["chrono_machina:big_ben"]
   }
 }

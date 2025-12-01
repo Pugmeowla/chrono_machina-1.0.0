@@ -8,6 +8,7 @@
   "secondary_color": "#332e27",
   "ability_bar_texture": "alienevo:textures/gui/ability_bar/interface.png",
   "hidden": false,
+  "persistent_data": true,
   "energy_bars": {
     "chronosapien_meter": {
       "max": 1000,
@@ -16,16 +17,32 @@
     }
   },
   "abilities": {
+    "chronosapien_loop": {
+      "type": "palladium:command",
+      "hidden": false,
+      "title": { "translate": "species.alienevo_aliens.88" },
+      "icon": "alienevo:textures/gui/playlists/playlist_1/alien_88.png",
+      "gui_position": [0, 0],
+      "description": "Chronosapiens are a species of time-controlling aliens with mastery over chronokinesis and time-based abilities.",
+      "first_tick_commands": [
+        "scoreboard objectives add Chronosapien.XP dummy",
+        "scoreboard objectives add Chronosapien.Level dummy",
+        "scoreboard objectives add Chronosapien.SkillPoint dummy",
+        "tag @s add Chronosapien.Unlocked"
+      ],
+      "last_tick_commands": ["setTickrate entity @e 20","effect clear @e"],
+      "commands": [
+        "scoreboard players add @s[palladium.power=selfdestruct:prototype_omnitrix_sdm] AlienEvo.SelfDestruct 1"
+      ]
+    },
     "beam-dummy": {
-      "type": "palladium:command",
+      "type": "palladium:dummy",
       "hidden": false,
-      "title": "Time Rays ",
+      "title": "§aTime Rays",
       "icon": "chrono_machina:textures/icon/time_beam.png",
-      "description": "Chronosapiens can fire time rays from their chest, which have various effects",
-      "gui_position": [0, 1],
-      "first_tick_commands": ["tag @s add ray"],
-      "last_tick_commands": [],
-      "commands": [],
+      "description": "Chronosapiens can fire time rays from their chest, which deal §edamage§r to targets.",
+      "gui_position": [0, 0.75],
+      "list_index": -1,
       "conditions": {
         "unlocking": [
           {
@@ -36,48 +53,21 @@
           {
             "type": "palladium:scoreboard_score_buyable",
             "objective": "Chronosapien.SkillPoint",
-            "score": 5,
-            "icon": "#alienevo:alien_sel"
+            "score": 1,
+            "icon": "alienevo:textures/gui/playlists/playlist_1/alien_88.png",
+            "description": "§eChronosapien Skill Point"
           }
         ]
       }
     },
-    "slow-dummy": {
-      "type": "palladium:command",
+    "beam-dummy2": {
+      "type": "palladium:dummy",
       "hidden": false,
-      "title": "Chronokinesis ",
-      "icon": "#alienevo:alien_sel",
-      "description": "Chronosapiens possesses chronokinesis, which gives them the control over time itself. They can reduce the time around them, making it look as if he is moving extremely fast to bystanders. Furthermore, Chronosapiens can speed up time.",
-      "gui_position": [0.5, 0.5],
-      "first_tick_commands": ["tag @s add chronokinesis"],
-      "last_tick_commands": [],
-      "commands": [],
-      "conditions": {
-        "unlocking": [
-          {
-            "type": "palladium:ability_unlocked",
-            "power": "null",
-            "ability": "chronosapien_loop"
-          },
-          {
-            "type": "palladium:scoreboard_score_buyable",
-            "objective": "Chronosapien.SkillPoint",
-            "score": 5,
-            "icon": "#alienevo:alien_sel"
-          }
-        ]
-      }
-    },
-    "stop-dummy": {
-      "type": "palladium:command",
-      "hidden": false,
-      "title": "Further Chronokinesis",
-      "icon": "minecraft:barrier",
-      "description": "Chronosapiens chronokinesis can be taken further, with the ability of stop time itself.",
-      "gui_position": [1, 1],
-      "first_tick_commands": ["tag @s add stop_time"],
-      "last_tick_commands": [],
-      "commands": [],
+      "title": "§aTime-Stop Rays",
+      "icon": "chrono_machina:textures/icon/time_beam_stop.png",
+      "description": "Chronosapiens can fire time rays from their chest, which §efreeze§r targets on time.",
+      "gui_position": [-0.75, 1.35],
+      "list_index": -1,
       "conditions": {
         "unlocking": [
           {
@@ -88,57 +78,67 @@
           {
             "type": "palladium:scoreboard_score_buyable",
             "objective": "Chronosapien.SkillPoint",
-            "score": 5,
-            "icon": "#alienevo:alien_sel"
+            "score": 3,
+            "icon": "alienevo:textures/gui/playlists/playlist_1/alien_88.png",
+            "description": "§eChronosapien Skill Point"
           }
         ]
       }
     },
-    "clockpoint-dummy": {
-      "type": "palladium:command",
+    "slow-dummy": {
+      "type": "palladium:dummy",
       "hidden": false,
-      "title": "Further Chronokinesis",
-      "icon": "chrono_machina:textures/icon/gps.png",
-      "description": "Chronosapiens chronokinesis can be taken even further, with the ability to rewind time in the form of a Clockpoint. Shift to set location, then use the ability to return to your previous save location",
-      "gui_position": [1.5, 1.5],
-      "first_tick_commands": ["tag @s add clockpoint"],
-      "last_tick_commands": [],
-      "commands": [],
+      "title": "§aTime-Slow/Accelerate",
+      "icon": "chrono_machina:textures/icon/accelerate_time.png",
+      "description": "Control time itself! §eSlow down§r time around you or §eaccelerate§r your own perception, making you appear faster to others.",
+      "gui_position": [0, 1.35],
+      "list_index": -1,
       "conditions": {
         "unlocking": [
           {
             "type": "palladium:ability_unlocked",
             "power": "null",
-            "ability": "stop-dummy"
+            "ability": "beam-dummy"
           },
           {
             "type": "palladium:scoreboard_score_buyable",
             "objective": "Chronosapien.SkillPoint",
-            "score": 5,
-            "icon": "#alienevo:alien_sel"
+            "score": 2,
+            "icon": "alienevo:textures/gui/playlists/playlist_1/alien_88.png",
+            "description": "§eChronosapien Skill Point"
           }
         ]
       }
     },
-    "chronosapien_loop": {
-      "type": "palladium:command",
+    "stop-dummy": {
+      "type": "palladium:dummy",
       "hidden": false,
-      "title": { "translate": "species.alienevo_aliens.88" },
-      "icon": "#alienevo:alien_sel",
-      "gui_position": [0, 0],
-      "first_tick_commands": [
-        "scoreboard objectives add Chronosapien.XP dummy",
-        "scoreboard objectives add Chronosapien.Level dummy",
-        "scoreboard objectives add Chronosapien.SkillPoint dummy"
-      ],
-      "last_tick_commands": [],
-      "commands": [
-        "scoreboard players add @s[palladium.power=selfdestruct:prototype_omnitrix_sdm] AlienEvo.SelfDestruct 1"
-      ]
+      "title": "§aTime Freeze",
+      "icon": "chrono_machina:textures/icon/stop.png",
+      "description": "Take chronokinesis further - §4freeze time§r completely, allowing you to act without interference.",
+      "gui_position": [0.75, 1.35],
+      "list_index": -1,
+      "conditions": {
+        "unlocking": [
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "beam-dummy2"
+          },
+          {
+            "type": "palladium:scoreboard_score_buyable",
+            "objective": "Chronosapien.SkillPoint",
+            "score": 3,
+            "icon": "alienevo:textures/gui/playlists/playlist_1/alien_88.png",
+            "description": "§eChronosapien Skill Point"
+          }
+        ]
+      }
     },
     "timeout_function": {
       "type": "alienevo:omnitrix_timer",
-      "hidden": true
+      "hidden": true,
+      "watch_name": "prototype",
+      "detransform_sound": "prototype"
     },
     "hideBody": {
       "type": "palladium:hide_body_part",
@@ -198,6 +198,49 @@
         ]
       }
     },
+    "nickname": {
+      "type": "palladium:name_change",
+      "icon": "minecraft:blaze_rod",
+      "title": "null",
+      "bar_color": "light_gray",
+      "hidden": true,
+      "hidden_in_bar": true,
+      "list_index": -1,
+      "name": [
+        {
+          "nbt": "KubeJSPersistentData.alienevo_88",
+          "entity": "@s"
+        }
+      ],
+      "conditions": {
+        "enabling": [],
+        "unlocking": [
+          {
+            "type": "palladium:and",
+            "conditions": [
+              {
+                "type": "palladium:not",
+                "conditions": [
+                  {
+                    "type": "alienevo:current_alien_nickname",
+                    "value": "species.alienevo_aliens.88"
+                  }
+                ]
+              },
+              {
+                "type": "palladium:not",
+                "conditions": [
+                  {
+                    "type": "palladium:has_tag",
+                    "tag": "alienevo.nickname"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
     "renderLayer": {
       "type": "palladium:render_layer",
       "hidden": true,
@@ -224,7 +267,7 @@
               {
                 "type": "palladium:ability_enabled",
                 "power": "null",
-                "ability": "ball_roll"
+                "ability": "slow_time"
               }
             ]
           }
@@ -267,30 +310,28 @@
       "type": "palladium:energy_beam",
       "persistent_data": true,
       "icon": "chrono_machina:textures/icon/time_beam.png",
-      "title": "Power Blast",
+      "title": "§aTime Blast",
       "bar_color": "purple",
       "hidden": true,
       "hidden_in_bar": false,
       "list_index": 0,
       "gui_position": "null",
-      "description": "null",
+      "description": "Fire a §5temporal ray§r that hits targets.",
       "energy_beam": "chrono_machina:chronosapien_beam",
-      "damage": 5,
-      "max_distance": 100,
-      "speed": 1,
+      "damage": 15,
+      "max_distance": 50,
+      "speed": 0.5,
       "commands_on_block_hit": [""],
-      "commands_on_entity_hit": [
-        "effect give @a[limit=1,distance=..1] minecraft:wither"
-      ],
+      "commands_on_entity_hit": [""],
       "energy_bar_usage": {
         "energy_bar": "chronosapien_meter",
-        "amount": 4
+        "amount": 10
       },
       "conditions": {
         "enabling": [
           {
             "type": "palladium:held",
-            "cooldown": 0
+            "cooldown": 80
           }
         ],
         "unlocking": [
@@ -300,34 +341,275 @@
             "min": 100
           },
           {
-            "type": "palladium:has_tag",
-            "tag": "ray"
+            "type": "palladium:ability_unlocked",
+            "ability": "beam-dummy"
+          },
+          {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "stop"
+          }
+            ]
           }
         ]
       }
     },
-    "speed": {
-      "type": "palladium:attribute_modifier",
-      "icon": "minecraft:textures/mob_effect/slowness.png",
-      "title": "Slow Down Time",
-      "bar_color": "light_blue",
-      "hidden": true,
+    "time_blast_stop": {
+      "type": "palladium:energy_beam",
       "persistent_data": true,
+      "icon": "chrono_machina:textures/icon/time_beam_stop.png",
+      "title": "§aTime Blast",
+      "bar_color": "purple",
+      "hidden": true,
       "hidden_in_bar": false,
       "list_index": 1,
-      "description": "Slows the time around you.",
-      "attribute": "minecraft:generic.movement_speed",
-      "amount": 0.5,
-      "operation": 0,
-      "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+      "gui_position": "null",
+      "description": "Fire a §5temporal ray§r that inflicts time-freeze on targets.",
+      "energy_beam": "chrono_machina:chronosapien_beam",
+      "damage": 0,
+      "max_distance": 100,
+      "speed": 0.5,
+      "commands_on_block_hit": [""],
+      "commands_on_entity_hit": [
+        "execute as @e[tag=!Player,distance=..2] if entity @s run effect give @s minecraft:resistance infinite 10 true",
+        "execute as @e[tag=!Player,distance=..2] if entity @s run setTickrate entity @s 0"
+      ],
       "energy_bar_usage": {
         "energy_bar": "chronosapien_meter",
-        "amount": 4
+        "amount": 5
       },
       "conditions": {
         "enabling": [
           {
             "type": "palladium:held",
+            "cooldown": 80
+          }
+        ],
+        "unlocking": [
+          {
+            "type": "palladium:energy_bar",
+            "energy_bar": "chronosapien_meter",
+            "min": 100
+          },
+          {
+            "type": "palladium:not",
+            "conditions": [
+              {
+                "type": "palladium:crouching"
+              }
+            ]
+          },
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "time_blast"
+          },
+          {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "stop"
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "time_blast_restore": {
+      "type": "palladium:energy_beam",
+      "persistent_data": true,
+      "icon": "chrono_machina:textures/icon/time_beam_restore.png",
+      "title": "§aTime Blast",
+      "bar_color": "purple",
+      "hidden": true,
+      "hidden_in_bar": false,
+      "list_index": 1,
+      "gui_position": "null",
+      "description": "Fire a §5temporal ray§r that removes time-freeze from targets.",
+      "energy_beam": "chrono_machina:chronosapien_beam",
+      "damage": 0,
+      "max_distance": 100,
+      "speed": 0.5,
+      "commands_on_block_hit": [""],
+      "commands_on_entity_hit": [
+        "execute as @e[tag=!Player,distance=..2] if entity @s run effect clear",
+        "execute as @e[tag=!Player,distance=..2] if entity @s run setTickrate entity @s 20"
+      ],
+      "energy_bar_usage": {
+        "energy_bar": "chronosapien_meter",
+        "amount": 5
+      },
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:held",
+            "cooldown": 80
+          }
+        ],
+        "unlocking": [
+          {
+            "type": "palladium:energy_bar",
+            "energy_bar": "chronosapien_meter",
+            "min": 100
+          },
+          {
+            "type": "palladium:crouching"
+          },
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "time_blast"
+          },
+          {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "stop"
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "blast_sound": {
+      "type": "palladium:command",
+      "first_tick_commands": [
+        "playsound chrono_machina:beam player @s ~ ~ ~ 1"
+      ],
+      "hidden": true,
+      "commands": "",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast"
+          },
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast_stop"
+          },
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast_restore"
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "blast_stopsound": {
+      "type": "palladium:command",
+      "first_tick_commands": [
+        "stopsound @s * chrono_machina:beam"
+      ],
+      "hidden": true,
+      "commands": "",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast"
+          },
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast_stop"
+          },
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast_restore"
+          }
+            ]
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "slow_time_sound": {
+      "type": "palladium:command",
+      "first_tick_commands": [
+        "playsound chrono_machina:time_slow player @s ~ ~ ~ 1"
+      ],
+      "hidden": true,
+      "commands": "",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "slow_time"
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "slow_time_stopsound": {
+      "type": "palladium:command",
+      "first_tick_commands": [
+        "stopsound @s * chrono_machina:time_slow"
+      ],
+      "hidden": true,
+      "commands": "",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "slow_time"
+          }
+            ]
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "slow_time": {
+      "type": "palladium:command",
+      "icon": "chrono_machina:textures/icon/slow_time.png",
+      "title": "§aSlow Time",
+      "bar_color": "light_gray",
+      "hidden": true,
+      "hidden_in_bar": false,
+      "list_index": 3,
+      "gui_position": "null",
+      "description": "Completely freeze time for all entities around you.",
+      "first_tick_commands": [
+"tag @s add beyondtime",
+"execute as @e[tag=!beyondtime] run setTickrate entity @s 5"
+      ],
+      "last_tick_commands": [
+"tag @s remove beyondtime",
+"execute as @e[tag=!Player] run setTickrate entity @s 20"
+      ],
+      "commands": [],
+      "energy_bar_usage": {
+        "energy_bar": "chronosapien_meter",
+        "amount": 3
+      },
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:toggle",
             "cooldown": 0,
             "key_type": "key_bind",
             "needs_empty_hand": false,
@@ -349,36 +631,95 @@
             ]
           },
           {
-            "type": "palladium:has_tag",
-            "tag": "chronokinesis"
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "stop"
+          }
+            ]
+          },
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "stop-dummy"
           }
         ]
       }
     },
-    "speed_tick": {
+    "accelerate_time_sound": {
       "type": "palladium:command",
-      "icon": "minecraft:textures/mob_effect/speed.png",
-      "title": "Speed Up Time",
+      "first_tick_commands": [
+        "playsound chrono_machina:ticking player @s ~ ~ ~ 1"
+      ],
+      "hidden": true,
+      "commands": "",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "accelerate_time"
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "accelerate_time_stopsound": {
+      "type": "palladium:command",
+      "first_tick_commands": [
+        "stopsound @s * chrono_machina:ticking"
+      ],
+      "hidden": true,
+      "commands": "",
+      "conditions": {
+        "enabling": [
+          {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "accelerate_time"
+          }
+            ]
+          }
+            ]
+          }
+        ]
+      }
+    },
+    "accelerate_time": {
+      "type": "palladium:command",
+      "icon": "chrono_machina:textures/icon/accelerate_time.png",
+      "title": "§aAccelerate Time",
       "bar_color": "light_blue",
       "hidden": true,
       "persistent_data": true,
       "hidden_in_bar": false,
-      "list_index": 1,
-      "description": "Speeds up the time around you.",
+      "list_index": 3,
+      "description": "Speed up time around you.",
       "first_tick_commands": [
-        "playsound chrono_machina:grandfather_clock player @s",
-        "timeclock tickrate 100"
+"tag @s add beyondtime",
+"execute as @e[tag=!beyondtime] run setTickrate entity @s 100"
       ],
-      "last_tick_commands": ["timeclock tickrate 20"],
+      "last_tick_commands": [
+"tag @s remove beyondtime",
+"execute as @e[tag=!Player] run setTickrate entity @s 20"
+      ],
       "commands": [],
       "energy_bar_usage": {
         "energy_bar": "chronosapien_meter",
-        "amount": 4
+        "amount": 3
       },
       "conditions": {
         "enabling": [
           {
-            "type": "palladium:held",
+            "type": "palladium:toggle",
             "cooldown": 0,
             "key_type": "key_bind",
             "needs_empty_hand": false,
@@ -392,71 +733,20 @@
             "min": 10
           },
           {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "stop"
+          }
+            ]
+          },
+          {
             "type": "palladium:crouching"
           },
           {
-            "type": "palladium:has_tag",
-            "tag": "chronokinesis"
-          }
-        ]
-      }
-    },
-    "step_assist": {
-      "type": "palladium:attribute_modifier",
-      "icon": "infinity:textures/icon/force_field.png",
-      "title": "Step Assist",
-      "persistent_data": true,
-      "bar_color": "light_blue",
-      "hidden": true,
-      "hidden_in_bar": true,
-      "list_index": -1,
-      "description": "Lets you walk up a whole block at once",
-      "attribute": "forge:step_height_addition",
-      "amount": 0.5,
-      "operation": 0,
-      "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
-      "conditions": {
-        "enabling": [
-          {
-            "type": "palladium:ability_enabled",
-            "power": "null",
-            "ability": "speed"
-          }
-        ]
-      }
-    },
-    "slow": {
-      "type": "palladium:command",
-      "icon": "minecraft:command_block",
-      "title": "null",
-      "bar_color": "light_gray",
-      "hidden": true,
-      "hidden_in_bar": false,
-      "list_index": -1,
-      "gui_position": "null",
-      "description": "null",
-      "first_tick_commands": [
-        "playsound chrono_machina:grandfather_clock player @s",
-        "timeclock tickrate 4"
-      ],
-      "last_tick_commands": ["timeclock tickrate 20"],
-      "commands": [
-        "effect give @e[distance=..10] minecraft:slowness 1 255 true",
-        "effect clear @s"
-      ],
-      "conditions": {
-        "enabling": [
-          {
-            "type": "palladium:ability_enabled",
-            "power": "null",
-            "ability": "speed"
-          }
-        ],
-        "unlocking": [
-          {
-            "type": "palladium:energy_bar",
-            "energy_bar": "chronosapien_meter",
-            "min": 100
+            "type": "palladium:ability_unlocked",
+            "ability": "slow-dummy"
           }
         ]
       }
@@ -464,142 +754,104 @@
     "pro_res": {
       "type": "palladium:damage_immunity",
       "hidden": true,
+      "list_index": -1,
       "damage_sources": ["minecraft:is_projectile"],
       "conditions": {
         "enabling": [
           {
             "type": "palladium:ability_enabled",
             "power": "null",
-            "ability": "speed"
+            "ability": "slow_time"
           }
         ]
       }
     },
-    "xlr8_trail": {
-      "type": "palladium:trail",
-      "list_index": -1,
+    "stop_time_sound": {
+      "type": "palladium:play_sound",
       "hidden": true,
-      "trail": "chrono_machina:chronosapien_trail",
+      "hidden_in_bar": true,
+      "sound": "chrono_machina:time_stop",
       "conditions": {
         "enabling": [
           {
             "type": "palladium:ability_enabled",
-            "power": "null",
-            "ability": "speed"
+            "ability": "stop"
           }
         ]
       }
     },
-    "set_clockpoint": {
+    "stop_sound": {
       "type": "palladium:command",
-      "icon": "chrono_machina:textures/icon/gps.png",
-      "title": "Set Clockpoint",
-      "bar_color": "light_gray",
-      "hidden": true,
-      "hidden_in_bar": false,
-      "list_index": 3,
-      "gui_position": "null",
-      "description": "null",
-      "first_tick_commands": [],
-      "last_tick_commands": [],
-      "commands": [
-        "function chrono_machina:set_waypoint",
-        "playsound chrono_machina:grandfather_clock player @s"
+      "first_tick_commands": [
+        "playsound chrono_machina:time_stop player @s ~ ~ ~ 0.75"
       ],
+      "hidden": true,
+      "commands": "",
       "conditions": {
         "enabling": [
           {
-            "type": "palladium:action",
-            "cooldown": 0,
-            "key_type": "key_bind",
-            "needs_empty_hand": false,
-            "allow_scrolling_when_crouching": true
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "stop"
           }
-        ],
-        "unlocking": [
-          {
-            "type": "palladium:crouching"
-          },
-          {
-            "type": "palladium:energy_bar",
-            "energy_bar": "chronosapien_meter",
-            "min": 100
-          },
-          {
-            "type": "palladium:has_tag",
-            "tag": "clockpoint"
+            ]
           }
         ]
       }
     },
-    "tp_clockpoint": {
+    "stop_stopsound": {
       "type": "palladium:command",
-      "icon": "chrono_machina:textures/icon/rewind.png",
-      "title": "Rewind to Clockpoint",
-      "bar_color": "light_gray",
-      "hidden": true,
-      "hidden_in_bar": false,
-      "list_index": 3,
-      "gui_position": "null",
-      "description": "null",
-      "first_tick_commands": [],
-      "last_tick_commands": [],
-      "energy_bar_usage": {
-        "energy_bar": "chronosapien_meter",
-        "amount": 200
-      },
-      "commands": [
-        "function chrono_machina:tp_waypoint",
-        "playsound chrono_machina:grandfather_clock player @s"
+      "first_tick_commands": [
+        "stopsound @s * chrono_machina:time_stop"
       ],
+      "hidden": true,
+      "commands": "",
       "conditions": {
         "enabling": [
-          {
-            "type": "palladium:action",
-            "cooldown": 0,
-            "key_type": "key_bind",
-            "needs_empty_hand": false,
-            "allow_scrolling_when_crouching": true
-          }
-        ],
-        "unlocking": [
-          {
-            "type": "palladium:energy_bar",
-            "energy_bar": "chronosapien_meter",
-            "min": 200
-          },
           {
             "type": "palladium:not",
             "conditions": [
-              {
-                "type": "palladium:crouching"
-              }
-            ]
-          },
           {
-            "type": "palladium:has_tag",
-            "tag": "clockpoint"
+            "type": "palladium:or",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "stop"
+          }
+            ]
+          }
+            ]
           }
         ]
       }
     },
     "stop": {
       "type": "palladium:command",
-      "icon": "minecraft:barrier",
-      "title": "Freeze Time",
+      "icon": "chrono_machina:textures/icon/stop.png",
+      "title": "§aFreeze Time",
       "bar_color": "light_gray",
       "hidden": true,
       "hidden_in_bar": false,
       "list_index": 2,
       "gui_position": "null",
-      "description": "null",
-      "first_tick_commands": ["timeclock pauseTime true"],
-      "last_tick_commands": ["timeclock pauseTime false"],
+      "description": "Completely freeze time for all entities around you.",
+      "first_tick_commands": [
+"timeclock pauseTime true"
+      ],
+      "last_tick_commands": [
+"timeclock pauseTime false"
+      ],
       "commands": [],
+      "energy_bar_usage": {
+        "energy_bar": "chronosapien_meter",
+        "amount": 3
+      },
       "conditions": {
         "enabling": [
           {
-            "type": "palladium:held",
+            "type": "palladium:toggle",
             "cooldown": 0,
             "key_type": "key_bind",
             "needs_empty_hand": false,
@@ -613,15 +865,33 @@
             "min": 100
           },
           {
-            "type": "palladium:has_tag",
-            "tag": "stop_time"
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "slow_time"
+          }
+            ]
+          },
+          {
+            "type": "palladium:not",
+            "conditions": [
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "accelerate_time"
+          }
+            ]
+          },
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "stop-dummy"
           }
         ]
       }
     },
     "t-pose": {
       "type": "palladium:animation_timer",
-      "list_index": 1,
+      "list_index": 3,
       "max_value": 8,
       "bar_color": "orange",
       "title": { "translate": "ability.alienevo_aliens.6.block" },
@@ -630,12 +900,144 @@
       "conditions": {
         "enabling": [
           {
+            "type": "palladium:or",
+            "conditions": [
+          {
             "type": "palladium:ability_enabled",
-            "power": "null",
             "ability": "time_blast"
+          },
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast_stop"
+          },
+          {
+            "type": "palladium:ability_enabled",
+            "ability": "time_blast_restore"
+          }
+            ]
           }
         ]
       }
+    },
+    "defense": {
+      "type": "palladium:attribute_modifier",
+      "attribute": "minecraft:generic.armor",
+      "title": "Base Defense : 20",
+      "uuid": "0713291c-8352-4d9f-a1f6-7d2171673a70",
+      "list_index": -1,
+      "hidden": true,
+      "gui_position": [
+        1,
+        1.5
+      ],
+      "amount": 20,
+      "conditions": {
+        "unlocking": [
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "chronosapien_loop"
+          }
+        ]
+      }
+    },
+    "toughness": {
+      "type": "palladium:attribute_modifier",
+      "attribute": "minecraft:generic.armor_toughness",
+      "title": "Base Tough : 20",
+      "uuid": "0713291c-8352-4d9f-a1f6-7d2271673a71",
+      "list_index": -1,
+      "hidden": true,
+      "gui_position": [
+        1,
+        1.5
+      ],
+      "amount": 20,
+      "conditions": {
+        "unlocking": [
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "chronosapien_loop"
+          }
+        ]
+      }
+    },
+    "hearts": {
+      "type": "palladium:attribute_modifier",
+      "attribute": "minecraft:generic.max_health",
+      "hidden": true,
+      "uuid": "312059f5-7fdb-44a1-8239-91a06b03d856",
+      "amount": 20
+    },
+    "fire_resistance": {
+      "type": "palladium:damage_immunity",
+      "hidden": true,
+      "icon": "alienevo:textures/gui/playlists/playlist_1/alien_5.png",
+      "title": "Methanosian Body",
+      "description": "Rapidly regenerate and adapt using a tough, plant-like alien body",
+      "gui_position": [
+        1,
+        0.5
+      ],
+      "damage_sources": [
+        "minecraft:is_fire",
+        "minecraft:is_freezing"
+      ],
+      "conditions": {
+        "unlocking": [
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "chronosapien_loop"
+          }
+        ]
+      }
+    },
+    "base_strength": {
+      "type": "palladium:attribute_modifier",
+      "attribute": "minecraft:generic.attack_damage",
+      "uuid": "20c7c6cb-2ab7-4341-890c-d6cace50e7fc",
+      "title": "Base Attack : 10",
+      "gui_position": [
+        -1,
+        1.5
+      ],
+      "hidden": true,
+      "amount": 9,
+      "conditions": {
+        "unlocking": [
+          {
+            "type": "palladium:ability_unlocked",
+            "ability": "chronosapien_loop"
+          }
+        ]
+      }
+    },
+    "fall_resistance": {
+      "type": "palladium:attribute_modifier",
+      "attribute": "palladium:fall_resistance",
+      "hidden": true,
+      "uuid": "08b1af9e-2118-4574-99eb-4124cf9eb2e5",
+      "amount": 5
+    },
+    "slot_restriction": {
+      "type": "palladium:restrict_slots",
+      "hidden": true,
+      "hidden_in_bar": false,
+      "slots": [
+        "head",
+        "chest",
+        "legs",
+        "feet",
+        "trinkets:head/hat",
+        "trinkets:head/face",
+        "trinkets:chest/back",
+        "trinkets:chest/necklace",
+        "trinkets:chest/cape",
+        "trinkets:hand/ring",
+        "trinkets:hand/glove",
+        "trinkets:offhand/glove",
+        "trinkets:offhand/ring",
+        "curios:hands"
+      ]
     }
   }
 }

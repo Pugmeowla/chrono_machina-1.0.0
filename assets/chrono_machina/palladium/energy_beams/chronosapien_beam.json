@@ -3,7 +3,7 @@
     "body_part": "chest",
     "glow_color": "#C0FF00",
     "core_color": "#FFFFFF",
-    "size": 8,
+    "size": 6,
     "bloom": 1,
     "glow_opacity": 0.5,
     "core_opacity": 0.5,
